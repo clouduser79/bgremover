@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erase — Background Remover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wordmark"><em>erase</em></div>
+  <div class="tagline">Background Removal — Runs Locally in Your Browser</div>
+</header>
+
+<main>
+  <div class="intro">
+    <h1>Remove any<br><strong>background</strong><br>instantly.</h1>
+    <p>Upload a photo and the AI removes the background — entirely in your browser. Nothing is uploaded to a server.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <input type="file" id="fileInput" accept="image/*">
+    <div class="drop-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 16l4-4 4 4 4-6 4 6M4 20h16M12 4v8"/>
+      </svg>
+    </div>
+    <div class="drop-label"><strong>Click to upload</strong> or drag &amp; drop</div>
+    <div class="drop-hint">PNG · JPG · WEBP — up to 20MB</div>
+  </div>
+
+  <div class="canvas-area" id="canvasArea">
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label">Original</div>
+        <div class="panel-img">
+          <img id="originalImg" src="" alt="Original image">
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Background Removed</div>
+        <div class="panel-img checker-bg" style="padding: 1rem;">
+          <canvas id="resultCanvas" style="display:none;"></canvas>
+          <div class="processing-overlay" id="overlay">
+            <div class="spinner"></div>
+            <div class="processing-label" id="processLabel">Loading AI model…</div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-download" id="downloadBtn" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4v12M8 12l4 4 4-4M4 20h16"/>
+        </svg>
+        Download PNG
+      </button>
+      <button class="btn-ghost" id="newImageBtn">Try another image</button>
+      <div class="status-badge" id="statusBadge">
+        <div class="dot"></div>
+        Background removed
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>Erase — AI Background Remover</span>
+  <span>Powered by @imgly/background-removal · No data leaves your device</span>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
